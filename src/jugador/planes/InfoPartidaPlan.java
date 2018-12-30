@@ -14,7 +14,7 @@ import ontologia.predicados.*;
 
 
 /**
- *  PLan que guarda la lista de espias en las creencias del jugador
+ *  Plan que guarda la lista de espias en las creencias del jugador
  */
 public class InfoPartidaPlan extends Plan
 {

@@ -23,21 +23,24 @@ public class VotarMisionPlan extends Plan
 	
 	public void body()
 	{		
+		/* Lo que hara el jugador en este plan sera votar la exito o fracaso en la mision */
 		IMessageEvent request	= (IMessageEvent)getInitialEvent();
-
-		boolean soyEspia = (boolean) getBeliefbase().getBelief("soy_Espia").getFact();
-		
-		if(!soyEspia) {
-			Votar_mision votar_mision = new Votar_mision();
-			Voto voto = new Voto();
-			votar_mision.setVoto(voto);
-			votar_mision.getvoto().setmision(true);
+		Jugador jugador = (Jugador) getBeliefbase().getBelief("jugador").getFact();
+		boolean soyEspia = jugador.getEspia();
+		int ronda = getBeliefbase().getBelief("Ronda").getFact();
+		Votar_mision votar_mision = new Votar_mision();
+		Voto voto = new Voto();
+		votar_mision.setVoto(voto);
+		/* En el caso de ser espia votara fracaso en todas las rondas, salvo en la primera para no ser descubierto*/
+		if(soyEspia) {
+			votar_mision.getvoto().setmision(false);
+			if(ronda==1){
+				votar_mision.getvoto().setmision(true);
+			}
 			IMessageEvent  reply = request.createReply("Agree_Votar_mision", votar_mision);		
 			sendMessage(reply);
+		/* En el caso de ser resistencia siempre votará exito */
 		}else {
-			Votar_mision votar_mision = new Votar_mision();
-			Voto voto = new Voto();
-			votar_mision.setVoto(voto);
 			votar_mision.getvoto().setmision(true);
 			IMessageEvent  reply = request.createReply("Agree_Votar_mision", votar_mision);		
 			sendMessage(reply);

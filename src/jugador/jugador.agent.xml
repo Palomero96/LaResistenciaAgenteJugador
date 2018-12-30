@@ -54,6 +54,19 @@ package="src.jugador"
 		<belief name="Equipo" class="Lista_Jugadores">
 			<fact>new Lista_Jugadores()</fact>
 		</belief>
+		
+		<!-- Representacion de la ronda en la que estamos (comienza la partida en la ronda 1)-->
+		<belief name="Ronda" class="int">
+			<fact>1</fact>
+		</belief>
+		<!-- Representacion del numero de votaciones de equipo que se han rechazado en una misma ronda-->
+		<belief name="VotacionesRechazadas" class="int">
+			<fact>0</fact>	
+		</belief>
+		<!-- Representacion del numero de misiones que se han completado-->
+		<belief name="MisionesCompletadas" class="int">
+			<fact>0</fact>	
+		</belief>
 	</beliefs>
 	
 	<goals>

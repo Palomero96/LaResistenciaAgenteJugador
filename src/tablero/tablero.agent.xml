@@ -71,6 +71,7 @@ package="src.tablero"
 		<belief name="Equipo5" class="int">
 			<fact>4</fact>
 		</belief>
+		
 		<!-- Representacion del numero de votaciones de equipo que se han rechazado en una misma ronda-->
 		<belief name="VotacionesRechazadas" class="int">
 			<fact>0</fact>	
