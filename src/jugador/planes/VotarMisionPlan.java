@@ -27,7 +27,7 @@ public class VotarMisionPlan extends Plan
 		IMessageEvent request	= (IMessageEvent)getInitialEvent();
 		Jugador jugador = (Jugador) getBeliefbase().getBelief("jugador").getFact();
 		boolean soyEspia = jugador.getEspia();
-		int ronda = getBeliefbase().getBelief("Ronda").getFact();
+		int ronda = (int) getBeliefbase().getBelief("Ronda").getFact();
 		Votar_mision votar_mision = new Votar_mision();
 		Voto voto = new Voto();
 		votar_mision.setVoto(voto);
