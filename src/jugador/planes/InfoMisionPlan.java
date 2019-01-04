@@ -39,6 +39,15 @@ public class InfoMisionPlan extends Plan
 		Jugador yo = (Jugador) getBeliefbase().getBelief("jugador").getFact();
 		ArrayList<Jugador> lista = (ArrayList) equipo.getjugadores();
 		ArrayList<Jugador> nuevosespias = new ArrayList<Jugador>();
+		int ronda = (int) getBeliefbase().getBelief("Ronda").getFact();
+
+		if(ronda==1){
+		/* En la ronda uno simplemente almaceno la informacion*/
+		Informacion.add(mision);
+		infomision.setInfoMision(Informacion);
+		getBeliefbase().getBelief("InfoMision").setFact(infomision);
+
+		}else{
 		/* Ahora procederemos a analizar todos los datos que tengamos*/
 		/* Solo me interesara analizar esta informacion si soy resistencia*/
 		if(!soyEspia){
@@ -161,6 +170,7 @@ public class InfoMisionPlan extends Plan
 		}
 		
 	}
+}
 
 	 	/* Aumentar el valor de ronda y de los demas contadores*/
 		int ronda = (int) getBeliefbase().getBelief("Ronda").getFact();

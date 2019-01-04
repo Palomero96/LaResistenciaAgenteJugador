@@ -28,8 +28,11 @@ public class AprobarEquipoPlan extends Plan
 		Lista_Jugadores equipo = (Lista_Jugadores) getBeliefbase().getBelief("Equipo").getFact(); //Hay que hacer un plan para que reciba el equipo y lo guarde
 		ArrayList<Jugador> listaequipo = (ArrayList) equipo.getjugadores();
 		Lista_Jugadores espias = (Lista_Jugadores) getBeliefbase().getBelief("espias").getFact();
+		ArrayList<Jugador> listaespias = new ArrayList<Jugador>();
+		System.out.println("Fallo aqui");
 		if(espias !=null){
-			ArrayList<Jugador> listaespias = (ArrayList) espias.getjugadores();
+			System.out.println("Fallo aca");
+			listaespias = (ArrayList) espias.getjugadores();
 		}
 		
 		Voto voto= new Voto();
@@ -38,7 +41,7 @@ public class AprobarEquipoPlan extends Plan
 		for(int i=0; i<listaequipo.size();i++){
 			for(int j=0; j<listaespias.size();j++){
 				
-				if(listaequipo.get(i).getIDAgente() == listaespias.get(i).getIDAgente() && listaespias != null){
+				if(listaequipo.get(i).getIDAgente() == listaespias.get(i).getIDAgente()){
 					numeroEspias++;
 				}
 			}
