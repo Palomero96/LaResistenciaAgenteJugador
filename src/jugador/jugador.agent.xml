@@ -15,7 +15,8 @@ package="src.jugador"
 		<import>java.util.*</import>
 		<import>jadex.util.*</import>
 		<import>jugador.planes.*</import>	
-		<import>jugador</import>	
+		<import>jugador</import>
+		<import>jugador.clases.*</import>	
 	    <import>ontologia.acciones.*</import>
 	    <import>ontologia.conceptos.*</import>
 	    <import>ontologia.predicados.*</import>
@@ -72,6 +73,12 @@ package="src.jugador"
 		<belief name="InfoMision" class="InfoMision">
 			<fact>new InfoMision()</fact>	
 		</belief>
+		<belief name="InfoEspia" class="InfoEspia">
+			<fact>new InfoEspia()</fact>	
+		</belief>
+		<belief name="InfoResistencia" class="InfoResistencia">
+			<fact>new InfoResistencia()</fact>	
+		</belief>	
 	</beliefs>
 	
 	<goals>
@@ -136,6 +143,7 @@ package="src.jugador"
 				<messageevent ref="Request_Votar_mision"/>
 			</trigger>
 		</plan>
+		<!-- Plan para recopilar informacion de la mision y analizar la situacion-->
 		<plan name="InfoMision">
 			<body class="InfoMisionPlan"/>
 			<trigger>
@@ -143,7 +151,23 @@ package="src.jugador"
 			</trigger>
 		</plan>
 
-		<!-- Info partida -->
+		<!-- Plan para recopilar informacion que me envian los jugadores acerca de quien es espia y quien no-->
+		<plan name="InfoEspia">
+			<body class="InfoEspiaPlan"/>
+			<trigger>
+				<messageevent ref="Inform_es_Espia"/>
+			</trigger>
+		</plan>
+
+		<!-- Plan para recopilar informacion que me envian los jugadores acerca de quien es resistencia-->
+		<plan name="InfoResistencia">
+			<body class="InfoResistenciaPlan"/>
+			<trigger>
+				<messageevent ref="Inform_es_Resitencia"/>
+			</trigger>
+		</plan>
+
+		<!--Plan para aprobar equipo -->
 		<plan name="Aprobar_Equipo">
 			<body class="AprobarEquipoPlan"/>
 			<trigger>
@@ -304,6 +328,32 @@ package="src.jugador"
  			</parameter>
 			<parameter name="content-class" class="Class" direction="fixed">
 				<value>Equipo_elegido.class</value>
+			</parameter>
+		</messageevent>
+
+		<!--  Inform es espia -->
+		<messageevent name="Inform_es_Espia" direction="send_receive" type="fipa">
+			<parameter name="performative" class="String" direction="fixed">
+				<value>SFipa.INFORM</value>
+			</parameter>
+			<parameter name="language" class="String" direction="fixed">
+				<value>SFipa.NUGGETS_XML</value>
+ 			</parameter>
+			<parameter name="content-class" class="Class" direction="fixed">
+				<value>Es_espia.class</value>
+			</parameter>
+		</messageevent>
+
+		<!--  Inform es resistencia -->
+		<messageevent name="Inform_es_Resitencia" direction="send_receive" type="fipa">
+			<parameter name="performative" class="String" direction="fixed">
+				<value>SFipa.INFORM</value>
+			</parameter>
+			<parameter name="language" class="String" direction="fixed">
+				<value>SFipa.NUGGETS_XML</value>
+ 			</parameter>
+			<parameter name="content-class" class="Class" direction="fixed">
+				<value>Es_resistencia.class</value>
 			</parameter>
 		</messageevent>
 

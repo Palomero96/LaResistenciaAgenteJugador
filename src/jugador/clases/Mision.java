@@ -1,15 +1,25 @@
-package jugador;
+package jugador.clases;
 
-import ontologia;
-import Mision;
 
-public class InfoMision extends Predicado {
+import java.util.*;
+
+import jadex.adapter.fipa.*;
+import jadex.runtime.IGoal;
+import jadex.runtime.IMessageEvent;
+import jadex.runtime.Plan;
+//import jdk.nashorn.internal.runtime.Scope;
+import ontologia.*;
+import ontologia.acciones.*;
+import ontologia.conceptos.*;
+import ontologia.predicados.*;
+
+public class Mision{
     private Resultado resultado;
     private int fracasos;
     private Lista_Jugadores lista;
 
     
-		public Votacion_publicada_mision()
+		public Mision()
 		{ ; }
       public Resultado getResultado() {
            return resultado;

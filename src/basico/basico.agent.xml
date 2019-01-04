@@ -2,8 +2,8 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://jadex.sourceforge.net/jadex
 http://jadex.sourceforge.net/jadex-0.96.xsd"
-name="jugadorbasico"
-package="src.jugadorbasico"
+name="basico"
+package="src.basico"
 >
 	<imports>
 		<import>jadex.runtime.*</import>
@@ -12,7 +12,7 @@ package="src.jugadorbasico"
 		<import>java.util.logging.*</import>
 		<import>java.util.*</import>
 		<import>jadex.util.*</import>
-		<import>jugador.planes.*</import>		
+		<import>basico.planes.*</import>		
 	    <import>ontologia.acciones.*</import>
 	    <import>ontologia.conceptos.*</import>
 	    <import>ontologia.predicados.*</import>

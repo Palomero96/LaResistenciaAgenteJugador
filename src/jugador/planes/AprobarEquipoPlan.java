@@ -28,16 +28,22 @@ public class AprobarEquipoPlan extends Plan
 		Lista_Jugadores equipo = (Lista_Jugadores) getBeliefbase().getBelief("Equipo").getFact(); //Hay que hacer un plan para que reciba el equipo y lo guarde
 		ArrayList<Jugador> listaequipo = (ArrayList) equipo.getjugadores();
 		Lista_Jugadores espias = (Lista_Jugadores) getBeliefbase().getBelief("espias").getFact();
-		ArrayList<Jugador> listaespias = (ArrayList) espias.getjugadores();
+		if(espias !=null){
+			ArrayList<Jugador> listaespias = (ArrayList) espias.getjugadores();
+		}
+		
 		Voto voto= new Voto();
-		int numeroEspias;
-		for(int i=0; i<listaequipo;i++){
-			for(int j=0; j<listaespias){
-				if(listaequipo.get(i).getIDAgente() == listaespias.get(i).getIDAgente()){
+		int numeroEspias=0;
+		if(listaespias !=null){
+		for(int i=0; i<listaequipo.size();i++){
+			for(int j=0; j<listaespias.size();j++){
+				
+				if(listaequipo.get(i).getIDAgente() == listaespias.get(i).getIDAgente() && listaespias != null){
 					numeroEspias++;
 				}
 			}
 		}
+	}
 		/* Si soy espia votare que si siempre a no ser que sea la ronda 3 y no hayan ganado los espias ninguna ronda*/
 		if(soyEspia){
 			voto.setequipo(true);
