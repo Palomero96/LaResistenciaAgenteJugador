@@ -33,7 +33,7 @@ public class AprobarEquipoPlan extends Plan
 		int numeroEspias;
 		for(int i=0; i<listaequipo;i++){
 			for(int j=0; j<listaespias){
-				if(listaequipo.get(i) == listaespias.get(i){
+				if(listaequipo.get(i).getIDAgente() == listaespias.get(i).getIDAgente()){
 					numeroEspias++;
 				}
 			}

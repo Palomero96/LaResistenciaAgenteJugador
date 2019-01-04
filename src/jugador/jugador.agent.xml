@@ -14,7 +14,8 @@ package="src.jugador"
 		<import>java.util.logging.*</import>
 		<import>java.util.*</import>
 		<import>jadex.util.*</import>
-		<import>jugador.planes.*</import>		
+		<import>jugador.planes.*</import>	
+		<import>jugador</import>	
 	    <import>ontologia.acciones.*</import>
 	    <import>ontologia.conceptos.*</import>
 	    <import>ontologia.predicados.*</import>
@@ -66,6 +67,10 @@ package="src.jugador"
 		<!-- Representacion del numero de misiones que se han completado-->
 		<belief name="MisionesCompletadas" class="int">
 			<fact>0</fact>	
+		</belief>
+		<!-- Creencia donde almacenaremos todo lo relacionado con el resultado de las misiones-->
+		<belief name="InfoMision" class="InfoMision">
+			<fact>new InfoMision()</fact>	
 		</belief>
 	</beliefs>
 	
@@ -131,8 +136,8 @@ package="src.jugador"
 				<messageevent ref="Request_Votar_mision"/>
 			</trigger>
 		</plan>
-		<plan name="Comprobar">
-			<body class="ComprobarPlan"/>
+		<plan name="InfoMision">
+			<body class="InfoMisionPlan"/>
 			<trigger>
 				<messageevent ref="Inform_Votacion_publicada_mision"/>
 			</trigger>
