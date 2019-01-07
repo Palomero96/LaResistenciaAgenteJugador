@@ -163,7 +163,7 @@ package="src.jugador"
 		<plan name="InfoResistencia">
 			<body class="InfoResistenciaPlan"/>
 			<trigger>
-				<messageevent ref="Inform_es_Resitencia"/>
+				<messageevent ref="Inform_es_Resistencia"/>
 			</trigger>
 		</plan>
 		<!-- Plan para recopilar informacion que me envian los jugadores acerca de quien es resistencia-->
@@ -351,7 +351,7 @@ package="src.jugador"
 		</messageevent>
 
 		<!--  Inform es resistencia -->
-		<messageevent name="Inform_es_Resitencia" direction="send_receive" type="fipa">
+		<messageevent name="Inform_es_Resistencia" direction="send_receive" type="fipa">
 			<parameter name="performative" class="String" direction="fixed">
 				<value>SFipa.INFORM</value>
 			</parameter>

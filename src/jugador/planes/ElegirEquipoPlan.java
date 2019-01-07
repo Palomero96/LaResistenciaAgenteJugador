@@ -69,11 +69,12 @@ public class ElegirEquipoPlan extends Plan
 						}
 					}
 				}else{
+					/* Revisar porque al elegir equipo elijo doscientos, habra que cambiar el orden de los bucles*/
 					listaequipo.add(yo);
 					for( int c=0; c<lista.size();c++){
 						for(int d=0; d<listaespias.size();d++){
 							for(int e=1; e<equipo;e++){
-								if(lista.get(c).getIDAgente() != listaespias.get(d).getIDAgente() && listaequipo.get(1).getIDAgente() != lista.get(c).getIDAgente()){
+								if(lista.get(c).getIDAgente() != listaespias.get(d).getIDAgente() && listaequipo.get(0).getIDAgente() != lista.get(c).getIDAgente()){
 									listaequipo.add(lista.get(e));
 								}
 							}

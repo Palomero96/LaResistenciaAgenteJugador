@@ -26,6 +26,7 @@ public class InfoMisionPlan extends Plan
 		Resultado resultado = (Resultado) inform.getResultado();
 		int fracasos = (int) inform.getFracasos();
 		/* Crear estructura para almacenar resultado equipo fracasos*/
+
 		InfoMision infomision = (InfoMision) getBeliefbase().getBelief("InfoMision").getFact();
 		ArrayList<Mision> Informacion= infomision.getInfoMision();
 
@@ -42,12 +43,15 @@ public class InfoMisionPlan extends Plan
 		int ronda = (int) getBeliefbase().getBelief("Ronda").getFact();
 
 		if(ronda==1){
+		infomision = new InfoMision();
+		Informacion= new ArrayList<Mision>();
 		/* En la ronda uno simplemente almaceno la informacion*/
 		Informacion.add(mision);
 		infomision.setInfoMision(Informacion);
 		getBeliefbase().getBelief("InfoMision").setFact(infomision);
 
 		}else{
+		
 		/* Ahora procederemos a analizar todos los datos que tengamos*/
 		/* Solo me interesara analizar esta informacion si soy resistencia*/
 		if(!soyEspia){
@@ -173,7 +177,7 @@ public class InfoMisionPlan extends Plan
 }
 
 	 	/* Aumentar el valor de ronda y de los demas contadores*/
-		int ronda = (int) getBeliefbase().getBelief("Ronda").getFact();
+		ronda = (int) getBeliefbase().getBelief("Ronda").getFact();
 		ronda = ronda+1;
 		int completadas = (int) getBeliefbase().getBelief("MisionesCompletadas").getFact();
 		if(fracasos == 0){

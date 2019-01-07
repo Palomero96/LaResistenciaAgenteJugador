@@ -41,7 +41,7 @@ public class AprobarEquipoPlan extends Plan
 		for(int i=0; i<listaequipo.size();i++){
 			for(int j=0; j<listaespias.size();j++){
 				
-				if(listaequipo.get(i).getIDAgente() == listaespias.get(i).getIDAgente()){
+				if(listaequipo.get(i).getIDAgente() == listaespias.get(j).getIDAgente()){
 					numeroEspias++;
 				}
 			}
