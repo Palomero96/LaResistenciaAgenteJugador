@@ -37,15 +37,15 @@ public class ElegirEquipoPlan extends Plan
 		ArrayList<Jugador> listaespias = (ArrayList) espias.getjugadores();
 		boolean soyEspia = (boolean) getBeliefbase().getBelief("soy_Espia").getFact();
 		int ronda = (int) getBeliefbase().getBelief("Ronda").getFact();
-		
+		System.out.println("Antes de elegir equipo");
 		
 		/* Si es la ronda uno */
 		if(ronda==1){
 				listaequipo.add(yo);
 				int contador= 1;
 				if(soyEspia){
-					for(int i=0; i<lista.size() && contador==2;i++){
-						for(int a=0; a<listaespias.size() && contador==2;a++){
+					for(int i=0; i<lista.size() && contador<2;i++){
+						for(int a=0; a<listaespias.size() && contador<2;a++){
 							if(lista.get(i).getIDAgente() != listaespias.get(a).getIDAgente() && listaequipo.get(1).getIDAgente() != lista.get(i).getIDAgente()){
 								listaequipo.add(lista.get(i));
 								contador++;
@@ -53,31 +53,58 @@ public class ElegirEquipoPlan extends Plan
 						}
 					}
 				}else{
-					int random = (int) (Math.random() * 7) + 1;
+					int random = (int) (Math.random() * 7);
 					listaequipo.add(lista.get(random));		
 				}
 		}else{
 				
 				if(soyEspia){
+					System.out.println("Soy espia empiezo a elegir");
 					Jugador auxiliar = new Jugador();
-					int  random = (int) (Math.random() *7) + 1;
+					int  random = (int) (Math.random() *3);
 					auxiliar = listaespias.get(random);
 					listaequipo.add(auxiliar);
-					for(int b=1; b< equipo; b++){
+					int contador=1;
+					for(int b=0; b<lista.size() && contador<equipo; b++){
 						if(lista.get(b).getIDAgente() != auxiliar.getIDAgente()){
 							listaequipo.add(lista.get(b));
+							contador++;
 						}
 					}
+					System.out.println("Soy espia acabo de elegir");
 				}else{
-					/* Revisar porque al elegir equipo elijo doscientos, habra que cambiar el orden de los bucles*/
 					listaequipo.add(yo);
-					for( int c=0; c<lista.size();c++){
-						for(int d=0; d<listaespias.size();d++){
-							for(int e=1; e<equipo;e++){
-								if(lista.get(c).getIDAgente() != listaespias.get(d).getIDAgente() && listaequipo.get(0).getIDAgente() != lista.get(c).getIDAgente()){
-									listaequipo.add(lista.get(e));
+					System.out.println("Soy resistencia empiezo a elegir");
+					int contador=1;
+					int auxiliar=0;
+						for( int c=0; c<lista.size() && contador<equipo;c++){
+							for(int d=0; d<listaespias.size() && contador<equipo;d++){
+								if(lista.get(c).getIDAgente() == listaespias.get(d).getIDAgente() && listaequipo.get(0).getIDAgente() != lista.get(c).getIDAgente()){
+									auxiliar++;
 								}
 							}
+							if(auxiliar==0){
+								listaequipo.add(lista.get(c));
+								contador++;
+							}
+							auxiliar=0;
+						}
+					
+					System.out.println("Soy resistencia acabo de elegir");
+					/* Si no se ha rellenado el equipo habra que rellenarlo con jugadores que no esten independientemente de si son espias o no*/
+					if(listaequipo.size()<equipo){
+						auxiliar=0;
+						for( int c=0; c<lista.size() && contador<equipo;c++){
+							for(int d=0; d<listaequipo.size() && contador<equipo;d++){
+								if(lista.get(c).getIDAgente() == listaespias.get(d).getIDAgente()){
+									auxiliar++;
+								}
+							}
+							if(auxiliar==0){
+								listaequipo.add(lista.get(c));
+								contador++;
+							}
+							auxiliar=0;
 						}
 					}
 				}

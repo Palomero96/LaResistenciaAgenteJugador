@@ -24,6 +24,12 @@ public class InfoEspiaPlan extends Plan
         Es_espia inform = (Es_espia) informe.getContent();
         InfoEspia infoespia = (InfoEspia) getBeliefbase().getBelief("InfoEspia").getFact();
         ArrayList<InformacionEspia> lista = infoespia.getInfoEspia();
+        if(infoespia.getInfoEspia()!=null){
+            lista = infoespia.getInfoEspia();
+        }else{
+            lista= new ArrayList<InformacionEspia>();
+        }
+        
         InformacionEspia informacionEspia = new InformacionEspia();
         AgentIdentifier id = (AgentIdentifier) informe.getParameter("sender").getValue();
         informacionEspia.setIDAgente(id);

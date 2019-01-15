@@ -23,8 +23,14 @@ public class InfoResistenciaPlan extends Plan
         IMessageEvent informe = (IMessageEvent)getInitialEvent();
         Es_resistencia inform = (Es_resistencia) informe.getContent();
         InfoResistencia inforesistencia = (InfoResistencia) getBeliefbase().getBelief("InfoResistencia").getFact();
-        ArrayList<InformacionResistencia> lista = inforesistencia.getInfoResistencia();
+        ArrayList<InformacionResistencia> lista;
+        if(inforesistencia.getInfoResistencia()!=null){
+            lista = inforesistencia.getInfoResistencia();
+        }else{
+            lista= new ArrayList<InformacionResistencia>();
+        }
         InformacionResistencia informacionResistencia = new InformacionResistencia();
+
         AgentIdentifier id = (AgentIdentifier) informe.getParameter("sender").getValue();
         informacionResistencia.setIDAgente(id);
         informacionResistencia.setjugadores(inform.getLista_jugadores_resistencia());
