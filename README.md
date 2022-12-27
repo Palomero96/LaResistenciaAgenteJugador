@@ -1,2 +1,2 @@
 # LaResistenciaAgenteJugador
-Agente jugador de la practica de Inteligencia Artificial en las organizaciones
+Development of the Player Agent of the Resistance board game for the Artificial Intelligence in Organizations Subject. Technologies used: java and jadex library.
